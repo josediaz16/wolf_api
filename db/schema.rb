@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_23_220231) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_23_220644) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "job_seeker_availabilities", force: :cascade do |t|
+    t.bigint "job_seeker_id", null: false
+    t.boolean "available", default: false, null: false
+    t.date "availability_date", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["job_seeker_id"], name: "index_job_seeker_availabilities_on_job_seeker_id"
+  end
 
   create_table "job_seeker_roles", force: :cascade do |t|
     t.bigint "job_seeker_id", null: false
@@ -39,6 +48,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_23_220231) do
     t.index ["name"], name: "index_roles_on_name"
   end
 
+  add_foreign_key "job_seeker_availabilities", "job_seekers"
   add_foreign_key "job_seeker_roles", "job_seekers"
   add_foreign_key "job_seeker_roles", "roles"
 end
