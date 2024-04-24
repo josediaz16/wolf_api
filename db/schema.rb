@@ -10,9 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_23_220108) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_23_220231) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "job_seeker_roles", force: :cascade do |t|
+    t.bigint "job_seeker_id", null: false
+    t.bigint "role_id", null: false
+    t.integer "rating", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["job_seeker_id", "role_id"], name: "index_job_seeker_roles_on_job_seeker_id_and_role_id", unique: true
+    t.index ["job_seeker_id"], name: "index_job_seeker_roles_on_job_seeker_id"
+    t.index ["role_id"], name: "index_job_seeker_roles_on_role_id"
+  end
 
   create_table "job_seekers", force: :cascade do |t|
     t.string "name"
@@ -28,4 +39,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_23_220108) do
     t.index ["name"], name: "index_roles_on_name"
   end
 
+  add_foreign_key "job_seeker_roles", "job_seekers"
+  add_foreign_key "job_seeker_roles", "roles"
 end
