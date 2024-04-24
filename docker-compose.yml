@@ -4,17 +4,20 @@ services:
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
-      - .:/rails
+      - .:/wolf_api
       - bundle_cache:/var/cache/bundle
     ports:
       - "3000:3000"
     depends_on:
       - postgres
+
   postgres:
     image: postgres:15
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
 volumes:
