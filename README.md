@@ -29,6 +29,11 @@ Run `docker-compose run web rspec` to run the test suite.
 5. Unit tests were added to make sure the queries work correctly by filter and all together.
 6. The code is more focused on performance, however the ORM was primarily used to facilitate building dynamic queries.
 
+## Data model
+
+![image](https://github.com/josediaz16/wolf_api/assets/16386555/b03dede9-765d-4a72-81f0-d9e1a766f62c)
+
+
 
 ## Pending
 
