@@ -67,8 +67,8 @@ class SearchJobSeekers
       ApplicationRecord.sanitize_sql_array(
         [
           "
-            (job_seeker_availabilities.availability_date_start <= :availability_date AND
-            job_seeker_availabilities.availability_date_end >= :availability_date)
+            (job_seeker_availabilities.date_start <= :availability_date AND
+            job_seeker_availabilities.date_end >= :availability_date)
           ",
           { availability_date: }
         ]

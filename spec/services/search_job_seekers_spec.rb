@@ -44,8 +44,8 @@ RSpec.describe SearchJobSeekers do
         create(
           :job_seeker_availability,
           job_seeker: job_seeker2,
-          availability_date_start: Date.new(2024, 3, 16),
-          availability_date_end: Date.new(2024, 3, 17) # Not available this date
+          date_start: Date.new(2024, 3, 16),
+          date_end: Date.new(2024, 3, 17) # Not available this date
         )
       end
 
@@ -53,8 +53,8 @@ RSpec.describe SearchJobSeekers do
         create(
           :job_seeker_availability,
           job_seeker: job_seeker3,
-          availability_date_start: Date.new(2024, 3, 14), # Not available any date in this range
-          availability_date_end: Date.new(2024, 3, 17)
+          date_start: Date.new(2024, 3, 14), # Not available any date in this range
+          date_end: Date.new(2024, 3, 17)
         )
       end
 
@@ -62,8 +62,8 @@ RSpec.describe SearchJobSeekers do
         create(
           :job_seeker_availability,
           job_seeker: job_seeker4,
-          availability_date_start: Date.new(2024, 3, 19), # Does not matter, Does not match with filtered dates
-          availability_date_end: Date.new(2024, 3, 20)
+          date_start: Date.new(2024, 3, 19), # Does not matter, Does not match with filtered dates
+          date_end: Date.new(2024, 3, 20)
         )
       end
 
@@ -127,8 +127,8 @@ RSpec.describe SearchJobSeekers do
         create(
           :job_seeker_availability,
           job_seeker: job_seeker5,
-          availability_date_start: Date.new(2024, 3, 14), # Discarded by availability
-          availability_date_end: Date.new(2024, 3, 15)
+          date_start: Date.new(2024, 3, 14), # Discarded by availability
+          date_end: Date.new(2024, 3, 15)
         )
       end
 
