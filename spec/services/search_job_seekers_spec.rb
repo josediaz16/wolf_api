@@ -141,7 +141,16 @@ RSpec.describe SearchJobSeekers do
       end
 
       it 'returns the correct job seekers' do
-        expect(result.ids).to eq([job_seeker2.id, job_seeker.id])
+        expect(result.ids).to eq([job_seeker2.id, job_seeker.id]) # First jobseeker2 bc has more rating
+      end
+
+      context 'with limit' do
+        subject { described_class.new(filters, limit:) }
+        let(:limit) { 1 }
+
+        it 'returns the correct job seekers' do
+          expect(result.ids).to eq([job_seeker2.id])
+        end
       end
     end
   end
